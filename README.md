@@ -15,17 +15,15 @@ window, their provider-supplied reset timestamps, and a weekly consumption pace.
   purchase, limit reset, or subscription changes.
 - Only the rendered quota fields (percentage, reset time, optional balance and
   count of available reset credits) are retained in process memory as a
-  short-lived cache. UI preferences, notification de-duplication, and — only
-  when the user enables it — the most recent local quota snapshot are stored
-  privately with `ctx.storage`. The snapshot contains no credentials or session
-  data and is visibly marked as stale when used.
+  short-lived cache. UI preferences and notification de-duplication are stored
+  privately with `ctx.storage`.
 
 ## Installation and activation
 
 Clone this repository directly into your Hermes plugin directory:
 
 ```bash
-git clone https://github.com/Istani/hermes-desktop-codex-usage-meter.git \
+git clone https://github.com/Istani/hermes-codex-usage-meter.git \
   "$HERMES_HOME/plugins/codex-usage-meter"
 ```
 
@@ -74,13 +72,6 @@ zero.
   normal Codex app/CLI flow. Do not paste credentials into Hermes.
 - **Data stale** — the last valid local reading remains visible while the next
   app-server request fails. Use **Aktualisieren** to retry.
-- **Remote Hermes gateway** — `ctx.rest()` is routed to the focused gateway, so
-  a remote gateway cannot execute the local Codex CLI. In **Einstellungen**, you
-  can enable **„Bei Remote-Gateways letzten lokalen Snapshot anzeigen“**. The
-  meter then ignores the remote result and keeps showing the last successful
-  local reading, explicitly labeled **„Lokaler Snapshot“** / stale. It is a
-  continuity display, not a live remote poll; credentials are never copied to
-  the remote gateway.
 
 ## Development checks
 

@@ -16,13 +16,10 @@ class DesktopPluginContractTests(unittest.TestCase):
         self.assertNotIn("enabled: localSource !== false", source)
         self.assertEqual(source.count("enabled: true"), 2)
 
-    def test_can_persist_and_render_a_clearly_marked_local_snapshot_for_remote_work(self):
+    def test_snapshot_fallback_is_not_shipped(self):
         source = PLUGIN_JS.read_text(encoding="utf-8")
-        self.assertIn("keepLocalQuotaOnRemote: false", source)
-        self.assertIn("localQuotaSnapshot", source)
-        self.assertIn("Lokaler Snapshot", source)
-        self.assertIn("snapshotResponse", source)
-        self.assertIn("liveResponse?.route_mode === 'remote' && settings.keepLocalQuotaOnRemote", source)
+        for removed in ("keepLocalQuotaOnRemote", "localQuotaSnapshot", "Lokaler Snapshot", "snapshotResponse", "route_mode"):
+            self.assertNotIn(removed, source)
 
 
 if __name__ == "__main__":
