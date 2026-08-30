@@ -1,0 +1,8 @@
+{
+  "name": "codex-usage-meter",
+  "label": "Codex-Verbrauch",
+  "description": "Local read-only Codex rate-limit backend for Hermes Desktop.",
+  "version": "1.0.0",
+  "hidden": true,
+  "api": "plugin_api.py"
+}
