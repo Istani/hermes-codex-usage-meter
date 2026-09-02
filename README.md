@@ -59,11 +59,9 @@ The desktop contribution is opt-in by design.
 
 ## Weekly pace
 
-Default mode is **Arbeitswoche** (Monday–Friday); **Kalenderwoche** is optional.
-The pace denominator is calculated from the actual weekly reset timestamp and
-window duration supplied by Codex — not from a hard-coded ISO week. Missing or
-expired resets show **Nicht verfügbar** / **wird aktualisiert**, never a false
-zero.
+The pace denominator is the seven 24-hour days immediately before the weekly
+reset timestamp supplied by Codex. Missing or expired resets show **Nicht
+verfügbar** / **wird aktualisiert**, never a false zero.
 
 ## Troubleshooting
 

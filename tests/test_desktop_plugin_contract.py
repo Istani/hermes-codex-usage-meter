@@ -21,6 +21,14 @@ class DesktopPluginContractTests(unittest.TestCase):
         for removed in ("keepLocalQuotaOnRemote", "localQuotaSnapshot", "Lokaler Snapshot", "snapshotResponse", "route_mode"):
             self.assertNotIn(removed, source)
 
+    def test_weekly_pace_uses_the_seven_days_before_the_provider_reset(self):
+        source = PLUGIN_JS.read_text(encoding="utf-8")
+        self.assertIn("const WEEK_MS = 7 * 24 * 60 * 60 * 1000", source)
+        self.assertIn("function paceFor(window)", source)
+        self.assertIn("const start = new Date(reset.valueOf() - WEEK_MS)", source)
+        for removed in ("mode: 'workweek'", "Verteilungsmodus", "Arbeitswoche", "Kalenderwoche"):
+            self.assertNotIn(removed, source)
+
 
 if __name__ == "__main__":
     unittest.main()
